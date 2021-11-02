@@ -1,12 +1,12 @@
 # YOLO-ZONE
 
-该仓库在以复现YOLOX的基础上，尝试整理自己的一套复现框架。
+Based on YOLOX, This Repo tries to organize my own set of reproduction framework. 
 
 
 TODO:
 ## Architectural
 ---
-- [ ] **1、网络模型搭建-Model**
+- [ ] 1、**Network model building**
 - [x] (1) common
 - [x] (2) backbone
 - [ ] (3) neck
@@ -15,30 +15,30 @@ TODO:
 
 ---
 
-- [ ] 2、模型推理预测-Predict
+- [ ] 2、**Model inference prediction**
 - [ ] (1)boxes
 - [ ] (2)plots
 - [ ] (3)inference
 
 ---
-- [ ] 3、训练数据加载-Dataloader
+- [ ] 3、**Dataloader**
 - [ ] (1)augmentations
 - [ ] (2)general
 - [ ] (3)dataloader
 
 ---
-- [ ] 4、模型训练-Train
+- [ ] 4、**Training**
 - [ ] (1)losses
 - [ ] (2)train
 
 ---
-- [ ] 5、模型评估-test
+- [ ] 5、**Test**
 - [ ] (1)coco
 - [ ] (2)voc
 - [ ] (3)test
 
 ---
-- [ ] 5、模型部署-deploy
+- [ ] 5、**Deploy**
 
 ## reference
 
