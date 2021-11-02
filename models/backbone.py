@@ -5,7 +5,7 @@
 '''
 
 from torch import nn
-from models.common import BaseConv, CSPLayer, DWConv, Focus, ResLayer, SPPBottleneck
+from common import BaseConv, CSPLayer, DWConv, Focus, ResLayer, SPPBottleneck
 
 
 #---------------------------------------------------------------#
@@ -252,4 +252,4 @@ class Darknet(nn.Module):
 
 
 if __name__ == '__main__':
-    print(CSPDarknet(1, 1))
+    print(Darknet(depth=53))

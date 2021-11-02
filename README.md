@@ -6,12 +6,12 @@ Based on YOLOX, This Repo tries to organize my own set of reproduction framework
 TODO:
 ## Architectural
 ---
-- [ ] 1、**Network model building**
+- [x] 1、**Network model building**
 - [x] (1) common
 - [x] (2) backbone
-- [ ] (3) neck
-- [ ] (4) head
-- [ ] (5) yolox
+- [x] (3) neck
+- [x] (4) head
+- [x] (5) yolox
 
 ---
 
