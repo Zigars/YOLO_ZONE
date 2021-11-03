@@ -247,9 +247,5 @@ class Darknet(nn.Module):
 
 
 
-
-
-
-
 if __name__ == '__main__':
-    print(Darknet(depth=53))
+    print(CSPDarknet(dep_mul=1, wid_mul=1))
