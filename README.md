@@ -16,26 +16,26 @@ TODO:
 ---
 
 - [ ] 2、**Model inference prediction**
-- [ ] (1)boxes
-- [ ] (2)plots
-- [ ] (3)inference
+- [ ] (1) boxes
+- [ ] (2) plots
+- [ ] (3) inference
 
 ---
 - [ ] 3、**Dataloader**
-- [ ] (1)augmentations
-- [ ] (2)general
-- [ ] (3)dataloader
+- [ ] (1) augmentations
+- [ ] (2) general
+- [ ] (3) dataloader
 
 ---
 - [ ] 4、**Training**
-- [ ] (1)losses
-- [ ] (2)train
+- [ ] (1) losses
+- [ ] (2) train
 
 ---
 - [ ] 5、**Test**
-- [ ] (1)coco
-- [ ] (2)voc
-- [ ] (3)test
+- [ ] (1) coco
+- [ ] (2) voc
+- [ ] (3) test
 
 ---
 - [ ] 5、**Deploy**
