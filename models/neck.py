@@ -10,7 +10,6 @@ from common import BaseConv, CSPLayer, DWConv
 
 
 
-
 #---------------------------------------------------------------#
 # YOLOPAFPN
 # CSPDarknet is the default backbone of this model

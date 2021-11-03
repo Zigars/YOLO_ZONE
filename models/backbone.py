@@ -1,5 +1,5 @@
 '''
-@Description:backbone:CSPDarknet/Darknet
+@Description:backbone: CSPDarknet/Darknet
 @Author:Zigar
 @Date:2021/11/01 11:17:46
 '''
