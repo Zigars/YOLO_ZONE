@@ -19,8 +19,8 @@ class YOLOXHead(nn.Module):
         num_classes,
         width=1.0,
         in_channels=[256, 512, 1024],
-        act="silu",
         depthwise=False,
+        act="silu",
     ):
         super().__init__()
 
@@ -147,5 +147,3 @@ class YOLOXHead(nn.Module):
             outputs.append(output)
 
         return outputs
-
-

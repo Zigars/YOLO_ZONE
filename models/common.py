@@ -80,7 +80,7 @@ class DWConv(nn.Module):
             in_channels, in_channels, ksize=ksize, stride=stride, groups=in_channels, act=act
         )
         self.pconv = BaseConv(
-            in_channels, out_channels, ksize=1, stride=stride, groups=1,act=act
+            in_channels, out_channels, ksize=1, stride=1, groups=1,act=act
         )
 
     def forward(self, x):
