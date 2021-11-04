@@ -5,8 +5,8 @@
 '''
 import torch
 import torch.nn as nn
-from backbone import Darknet, CSPDarknet
-from common import BaseConv, CSPLayer, DWConv
+from .backbone import Darknet, CSPDarknet
+from .common import BaseConv, CSPLayer, DWConv
 
 
 

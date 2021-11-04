@@ -7,7 +7,7 @@
 import torch
 import torch.nn as nn
 
-from common import BaseConv, DWConv
+from .common import BaseConv, DWConv
 
 
 #---------------------------------------------------------------#

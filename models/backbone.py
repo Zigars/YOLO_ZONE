@@ -5,7 +5,7 @@
 '''
 
 from torch import nn
-from common import BaseConv, CSPLayer, DWConv, Focus, ResLayer, SPPBottleneck
+from .common import BaseConv, CSPLayer, DWConv, Focus, ResLayer, SPPBottleneck
 
 
 #---------------------------------------------------------------#
