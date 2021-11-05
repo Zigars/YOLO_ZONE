@@ -25,8 +25,6 @@ class CSPDarknet(nn.Module):
         assert out_features, "please provide output features of Darknet"
         # desired output layer name
         self.out_features = out_features
-        # activation
-        self.act = act
         # DWConv or BaseConv(DWConv use in yolox-nano)
         Conv = DWConv if depthwise else BaseConv
 

@@ -6,6 +6,9 @@
 import torch
 import cv2
 import numpy as np
+
+import torch.nn as nn
+
 from models.yolox import YOLOX
 
 
@@ -22,11 +25,24 @@ def get_label(label_dir):
 # load models
 #---------------------------------------------------------------#
 def get_model(num_classes, version, weight_dir, device):
+
+    # load model
     model = YOLOX(num_classes=num_classes, version=version)
+
+    # nano Conv's nn.BatchNorm2d need set different value
+    if version == "nano":
+        def init_yolo(Module):
+            for m in Module.modules():
+                if isinstance(m, nn.BatchNorm2d):
+                    m.eps = 1e-3
+                    m.momentum = 0.03
+        model.apply(init_yolo)
+
+    # load pretrained weights
     pretrained_state_dict = torch.load(weight_dir, map_location=lambda storage, loc: storage)["model"]
     model.load_state_dict(pretrained_state_dict, strict=True)
-    model.to(device=device)
-    model.eval()
+
+    model.to(device=device).eval()
     return model
 
 

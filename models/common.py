@@ -21,7 +21,7 @@ def get_activation(name="silu", inplace=True):
          module = nn.ReLU(inplace=inplace)
     elif name == "lrelu":
          module = nn.LeakyReLU(0.1, inplace=inplace)
-    else: 
+    else:
         raise AttributeError("Unsupported act type: {}".format(name))
     return module
 
@@ -32,14 +32,14 @@ def get_activation(name="silu", inplace=True):
 #---------------------------------------------------------------#
 class BaseConv(nn.Module):
     def __init__(
-        self, 
-        in_channels, 
-        out_channels, 
-        ksize, 
+        self,
+        in_channels,
+        out_channels,
+        ksize,
         stride,
-        groups=1, 
-        bias=False, 
-        act="silu" 
+        groups=1,
+        bias=False,
+        act="silu"
     ):
         super().__init__()
         # same padding
@@ -69,11 +69,11 @@ class BaseConv(nn.Module):
 #---------------------------------------------------------------#
 class DWConv(nn.Module):
     def __init__(
-        self, 
-        in_channels, 
-        out_channels, 
-        ksize, 
-        stride=1, 
+        self,
+        in_channels,
+        out_channels,
+        ksize,
+        stride=1,
         act="silu"
     ):
         super().__init__()
@@ -81,7 +81,7 @@ class DWConv(nn.Module):
             in_channels, in_channels, ksize=ksize, stride=stride, groups=in_channels, act=act
         )
         self.pconv = BaseConv(
-            in_channels, out_channels, ksize=1, stride=1, groups=1,act=act
+            in_channels, out_channels, ksize=1, stride=1, groups=1, act=act
         )
 
     def forward(self, x):
@@ -126,7 +126,7 @@ class Bottleneck(nn.Module):
 #---------------------------------------------------------------#
 # Resdual layer with 'in_channels' input
 # used in Darknet
-# BaseConv_1*1 -> BaseConv_3*3 
+# BaseConv_1*1 -> BaseConv_3*3
 # shortcut
 #---------------------------------------------------------------#
 class ResLayer(nn.Module):
@@ -140,7 +140,7 @@ class ResLayer(nn.Module):
             in_channels, mid_channels, ksize=1, stride=1, act="lrelu"
         )
         self.layer2 = BaseConv(
-            mid_channels, in_channels, ksize=3, stride=1, act="lrelu" 
+            mid_channels, in_channels, ksize=3, stride=1, act="lrelu"
         )
 
     def forward(self, x):
@@ -150,7 +150,7 @@ class ResLayer(nn.Module):
 
 #---------------------------------------------------------------#
 # Spatial pyramid pooling layer
-# used in YOLOv3-spp 
+# used in YOLOv3-spp
 # BaseConv -> Concat[MaxPool2d * [1, 5, 9, 13]] -> BaseConv
 #---------------------------------------------------------------#
 class SPPBottleneck(nn.Module):
@@ -212,13 +212,13 @@ class CSPLayer(nn.Module):
         )
         module_list = [
             Bottleneck(
-                hidden_channels, 
-                hidden_channels, 
+                hidden_channels,
+                hidden_channels,
                 shortcut,
                 expansion=1.0,
-                depthwise=depthwise, 
-                act=act 
-            ) 
+                depthwise=depthwise,
+                act=act
+            )
             for _ in range(n)
         ]
         self.m = nn.Sequential(*module_list)
@@ -238,9 +238,9 @@ class CSPLayer(nn.Module):
 #---------------------------------------------------------------#
 class Focus(nn.Module):
     def __init__(
-        self, 
-        in_channels, 
-        out_channels, 
+        self,
+        in_channels,
+        out_channels,
         ksize  = 1,
         stride = 1,
         act    = "silu"
@@ -249,7 +249,7 @@ class Focus(nn.Module):
         self.conv = BaseConv(
             in_channels * 4, out_channels, ksize, stride, act=act
         )
-    
+
     def forward(self, x):
         # shape of x (b,c,w,h) -> y(b,4c,w/2,h/2)
         patch_top_left = x[..., ::2, ::2]

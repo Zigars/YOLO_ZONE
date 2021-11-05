@@ -24,8 +24,8 @@ class YOLOPAFPN(nn.Module):
         act="silu"
     ):
         super().__init__()
-        self.backbone = CSPDarknet(depth, width, depthwise=depthwise,act=act)
-        self.in_features= ("dark3","dark4","dark5")
+        self.backbone = CSPDarknet(depth, width, depthwise=depthwise, act=act)
+        self.in_features = ("dark3","dark4","dark5")
         self.in_channels = in_channels
         Conv = DWConv if depthwise else BaseConv
 
@@ -34,7 +34,7 @@ class YOLOPAFPN(nn.Module):
         # P5_Upsample
         # 1024 -> 512
         self.lateral_conv0 = BaseConv(
-            int(in_channels[2] * width), int(in_channels[1] * width), ksize=1, stride=1,act=act
+            int(in_channels[2] * width), int(in_channels[1] * width), ksize=1, stride=1, act=act
         )
 
         # C3_p4
@@ -107,7 +107,7 @@ class YOLOPAFPN(nn.Module):
 
         # Stage5
         fpn_out0 = self.lateral_conv0(x0)    # 1024 -> 512/32
-        f_out0 = self.upsample(fpn_out0)     # 512/16 
+        f_out0 = self.upsample(fpn_out0)     # 512/16
 
         # Stage4
         f_out0 = torch.cat([f_out0, x1], 1)  # 512 -> 1024/16
@@ -119,14 +119,14 @@ class YOLOPAFPN(nn.Module):
         # Stage3
         f_out1 = torch.cat([f_out1, x2], 1)  # 256 -> 512/8
         pan_out2 = self.C3_p3(f_out1)        # 512 -> 256/8 -> out
-        
+
         # Stage4
-        p_out1 = self.bu_conv2(pan_out2)     # 256 -> 256/16 
+        p_out1 = self.bu_conv2(pan_out2)     # 256 -> 256/16
         p_out1 = torch.cat([p_out1, fpn_out1], 1) # 256->512/16
         pan_out1 = self.C3_n3(p_out1)        # 512 -> 512/16 ->out
 
         # stage5
-        p_out0 = self.bu_conv1(pan_out1)     # 512 -> 512/32 
+        p_out0 = self.bu_conv1(pan_out1)     # 512 -> 512/32
         p_out0 = torch.cat([p_out0, fpn_out0], 1) # 512->1024/32
         pan_out0 = self.C3_n4(p_out0)        # 1024 -> 1024/32 ->out
 

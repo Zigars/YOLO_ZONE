@@ -28,10 +28,9 @@ class YOLOX(nn.Module):
             "x": [1.33, 1.25],
         }
         depth, width = depth_width[version]
-        in_channels = [256, 512, 1024]
         depthwise = True if version == "nano" else False
-        self.backbone = YOLOPAFPN(depth, width, in_channels, depthwise)
-        self.head = YOLOXHead(num_classes, width, in_channels, depthwise)
+        self.backbone = YOLOPAFPN(depth, width, depthwise=depthwise)
+        self.head = YOLOXHead(num_classes, width, depthwise=depthwise)
 
     def forward(self, x):
         fpn_outs = self.backbone.forward(x)

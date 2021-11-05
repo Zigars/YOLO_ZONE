@@ -67,7 +67,18 @@ class YOLOXHead(nn.Module):
                             act          = act
                         ),
                     ]
-                )    
+                )
+            )
+
+            # class pred branch
+            self.cls_preds.append(
+                nn.Conv2d(
+                    in_channels=int(256 * width),
+                    out_channels=num_classes,
+                    kernel_size=1,
+                    stride=1,
+                    padding=0
+                )
             )
 
             # # Regression branch
@@ -90,19 +101,9 @@ class YOLOXHead(nn.Module):
                             act          = act
                         ),
                     ]
-                )    
-            )
-
-            # class pred branch
-            self.cls_preds.append(
-                nn.Conv2d(
-                    in_channels=int(256 * width),
-                    out_channels=num_classes,
-                    kernel_size=1,
-                    stride=1,
-                    padding=0
                 )
             )
+
 
             # region pred branch(4)
             self.reg_preds.append(
