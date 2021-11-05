@@ -15,10 +15,10 @@ TODO:
 
 ---
 
-- [ ] 2、**Model inference prediction**
-- [ ] (1) boxes
-- [ ] (2) plots
-- [ ] (3) inference
+- [x] 2、**Model inference prediction**
+- [x] (1) boxes
+- [x] (2) plots
+- [x] (3) inference
 
 ---
 - [ ] 3、**Dataloader**
