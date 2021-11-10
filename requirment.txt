@@ -1,0 +1,6 @@
+# basic envirement requirment
+numpy
+torch ≥ 1.8
+torchvision ≥ 0.8
+opencv_python
+torchsummary

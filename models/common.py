@@ -11,12 +11,22 @@ import torch.nn as nn
 
 
 #---------------------------------------------------------------#
+# For low vesion torch
+#---------------------------------------------------------------#
+class SiLU(nn.Module):
+    """export-friendly version of nn.SiLU()"""
+    @staticmethod
+    def forward(x):
+        return x * torch.sigmoid(x)
+
+
+#---------------------------------------------------------------#
 # Get activate
 # SiLU/ReLU/LeakyReLU
 #---------------------------------------------------------------#
 def get_activation(name="silu", inplace=True):
     if   name == "silu":
-         module = nn.SiLU(inplace=inplace)
+         module = SiLU()
     elif name == "relu":
          module = nn.ReLU(inplace=inplace)
     elif name == "lrelu":

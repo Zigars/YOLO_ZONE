@@ -165,7 +165,7 @@ def postprocess(outputs, ratio, input_size, num_classes, conf_thres, iou_thres):
             return None
 
         # nms
-        nms_out_index = torchvision.ops.batched_nms(detections[:, :4], detections[:, 4], detections[:, 5],
+        nms_out_index = torchvision.ops.boxes.batched_nms(detections[:, :4], detections[:, 4], detections[:, 5],
                                                     iou_thres)
         detections = detections[nms_out_index]
 

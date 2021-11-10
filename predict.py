@@ -140,7 +140,7 @@ class Predictor(object):
                 )
 
                 # Stream results
-                if self.view_img and self.webcam:
+                if self.view_img and (self.dataset.mode == 'video' or 'stream'):
                     cv2.imshow(str(p), image0)
                     cv2.waitKey(1)  # 1 millisecond
 
@@ -172,15 +172,15 @@ class Predictor(object):
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument('--input-size', type=int, default=640, help='inference size (pixels)')
-    parser.add_argument('--source', type=str, default='0', help='source')  # file/folder, 0 for webcam
-    parser.add_argument('--device', default='cuda', help='cuda device,cuda or cpu')
+    parser.add_argument('--source', type=str, default='data/img', help='source')  # file/folder, 0 for webcam
+    parser.add_argument('--device', default='cuda', help='device, cuda or cpu')
     parser.add_argument('--num_classes', type=int, default=80, help='number of classes')
+    parser.add_argument('--label-dir', type=str, default='labels/coco_label.txt', help='label names')
     parser.add_argument('--weights-dir', nargs='+', type=str, default='weights/yolox_s.pth', help='model.pth path(s)')
     parser.add_argument('--version', type=str, default='s', help='version of models')
     parser.add_argument('--conf-thres', type=float, default=0.5, help='object confidence threshold')
     parser.add_argument('--iou-thres', type=float, default=0.45, help='IOU threshold for NMS')
-    parser.add_argument('--label-dir', type=str, default='labels/coco_label.txt', help='label names')
-    parser.add_argument('--view-img', type=bool, default=True, help='display results')
+    parser.add_argument('--view-img', type=bool, default=False, help='display results')
     parser.add_argument('--save-txt', type=bool, default=True, help='save results to *.txt')
     parser.add_argument('--nosave', type=bool, default=False, help='do not save images/videos')
     parser.add_argument('--project', default='runs/detect', help='save results to project/name')
