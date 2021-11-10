@@ -16,9 +16,10 @@ TODO:
 ---
 
 - [x] 2、**Model inference prediction**
-- [x] (1) boxes
+- [x] (1) pred_utils
 - [x] (2) plots
-- [x] (3) inference
+- [x] (3) predict
+- [x] (4) dataloader
 
 ---
 - [ ] 3、**Dataloader**
