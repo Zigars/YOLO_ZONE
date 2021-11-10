@@ -4,8 +4,8 @@
 @Date:2021/10/31 19:58:12
 '''
 import torch.nn as nn
-from .neck import YOLOPAFPN
-from .head import YOLOXHead
+from models.neck import YOLOPAFPN
+from models.head import YOLOXHead
 
 
 #---------------------------------------------------------------#
