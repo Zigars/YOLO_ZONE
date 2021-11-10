@@ -134,10 +134,7 @@ class Predictor(object):
                 # Print time (inference + NMS)
                 print(f'{s}Done. ({t3 - t1:.3f}s)', f'(inference:{t2 - t1:.3f}s,',  f'nms:{t3 - t2:.3f}s)')
 
-                image = plot_one_image(
-                    image0, bboxes, scores, cls_ids, self.colors,
-                    conf=self.conf_thres, class_names=self.label,
-                )
+                
 
                 # Stream results
                 if self.view_img and (self.dataset.mode == 'video' or 'stream'):
@@ -145,6 +142,11 @@ class Predictor(object):
                     cv2.waitKey(1)  # 1 millisecond
 
                 # plot bboxes on image
+                image = plot_one_image(
+                    image0, bboxes, scores, cls_ids, self.colors,
+                    conf=self.conf_thres, class_names=self.label,
+                )
+
                 if self.save_img:
                     if self.dataset.mode == 'image':
                         cv2.imwrite(save_path, image)
